@@ -5,4 +5,6 @@ celery -A myshop  worker --loglevel=info -P gevent
 celery -A myshop flower 
 # Flower доступен по адресу:
 http://localhost:5555
+# Установка GTK-for-Windows-Runtime-Environment-Installer:
+https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases
 
