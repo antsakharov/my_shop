@@ -7,4 +7,5 @@ celery -A myshop flower
 http://localhost:5555
 # Установка GTK-for-Windows-Runtime-Environment-Installer:
 https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases
-
+# Установка gettext для Windows:
+https://mlocati.github.io/articles/gettext-iconv-windows.html
