@@ -1,11 +1,102 @@
-# my_shop
-# Запуск celery
-celery -A myshop  worker --loglevel=info -P gevent
-# Запуск flower
-celery -A myshop flower 
-# Flower доступен по адресу:
-http://localhost:5555
-# Установка GTK-for-Windows-Runtime-Environment-Installer:
-https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases
-# Установка gettext для Windows:
-https://mlocati.github.io/articles/gettext-iconv-windows.html
+# my_shop - Многоязычный интернет-магазин на Django
+
+## Описание проекта
+
+my_shop представляет собой полнофункциональный интернет-магазин с поддержкой нескольких языков, построенный на фреймворке Django. Проект реализует все необходимые компоненты электронной коммерции, включая каталог товаров, систему заказов, оплату и механизм рекомендаций. Особое внимание уделено масштабируемости и производительности благодаря использованию современных технологий и асинхронной обработке задач.
+
+## Назначение
+
+Проект создан для организации эффективного онлайн-торгового процесса, включающего:
+
+* Управление товарами и категориями
+* Обработку заказов и платежей
+* Аналитику продаж и отчетность
+* Управление складскими запасами
+* Автоматизацию бизнес-процессов через асинхронные задачи
+* Международную торговлю с поддержкой множества языков
+
+## Реализованный функционал
+
+### Основные возможности:
+
+* Каталог товаров с фильтрацией и сортировкой
+* Корзина покупок на основе сессий Django
+* Система оформления заказов
+* Управление профилем пользователя
+* Отслеживание статусов заказов
+* Система рекомендаций товаров на основе Redis
+* Экспорт заказов в CSV формат
+* Динамическая генерация счетов в PDF
+* Купонная система с интеграцией Stripe
+
+### Административная панель:
+
+* Управление товарами и категориями
+* Управление заказами и клиентами
+* Статистика продаж и аналитика
+* Управление переводами через Rosetta
+* Управление купонами и промоакциями
+
+### Международная поддержка:
+
+* Поддержка множества языков интерфейса
+* Переводы моделей Django с помощью Parler
+* Локализованные поля форм через Django-localflavor
+* Языковые префиксы в URL
+* Перевод шаблонов и URL паттернов
+
+## Технологии
+
+### Основной стек:
+
+* Backend: Django 5.x
+* Фоновые задачи: Celery
+* Кэш: Redis
+* Frontend: HTML/CSS/JavaScript
+* Платежи: Stripe
+* Брокер сообщений: RabbitMQ
+* Мониторинг: Flower
+* Система переводов: Rosetta
+
+## Установка и запуск
+
+### Подготовка окружения:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # для Windows: .venv\Scripts\activate
+```
+
+### Установка зависимостей:
+```bash
+pip install -r requirements.txt
+```
+
+### Запуск сервисов:
+```bash
+# Запуск Redis
+docker run -d -p 6379:6379 redis
+
+# Запуск Celery worker
+celery -A myshop worker --loglevel=info -P gevent
+
+# Запуск Flower (мониторинг)
+celery -A myshop flower
+```
+
+### Запуск проекта:
+```bash
+python manage.py migrate
+python manage.py runserver
+```
+
+## Мониторинг
+- Flower доступен по адресу: [http://localhost:5555](http://localhost:5555)
+- Панель администратора: [http://localhost:8000/admin](http://localhost:8000/admin)
+- Rosetta для управления переводами: http://localhost:8000/admin/rosett
+
+## Дополнительно
+### Установка GTK для Windows (Необходимо для генерации PDF документов):
+[GTK-for-Windows-Runtime-Environment-Installer](https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases)
+
+### Установка gettext (Требуется для работы с переводами):
+[gettext-iconv-windows](https://mlocati.github.io/articles/gettext-iconv-windows.html)
